@@ -80,7 +80,7 @@ const Header = () => {
               Industries
             </NavLink>
             <NavLink to="/about" className={({ isActive }) => `nav-link text-sm font-semibold tracking-wide ${isActive ? 'text-brand-accent' : ''}`}>
-              About Us
+              About Ussss
             </NavLink>
 
             {/* Background Theme Toggle */}
