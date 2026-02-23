@@ -6,6 +6,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProductHovered, setIsProductHovered] = useState(false);
+  const [isMobileProductOpen, setIsMobileProductOpen] = useState(false);
   const { currentAccent, setCurrentAccent, accentThemes, isDarkMode, toggleBackgroundTheme } = useTheme();
 
   useEffect(() => {
@@ -15,6 +16,12 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const closeMenus = () => {
+    setIsMenuOpen(false);
+    setIsMobileProductOpen(false);
+    setIsProductHovered(false);
+  };
 
   const navItems = [
     { name: 'Dashboard', path: '/dashboard' },
@@ -138,10 +145,30 @@ const Header = () => {
       <div className={`md:hidden absolute w-full transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-screen border-b border-white/10 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-brand-deep/98 backdrop-blur-2xl`}>
         <div className="px-6 py-10 space-y-8">
           <div className="space-y-6">
-            <Link to="/dashboard" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
-            <Link to="/products" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={() => setIsMenuOpen(false)}>Products</Link>
-            <Link to="/industries" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={() => setIsMenuOpen(false)}>Industries</Link>
-            <Link to="/about" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+            <Link to="/dashboard" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={closeMenus}>Dashboard</Link>
+
+            {/* Mobile Products Accordion */}
+            <div className="space-y-4">
+              <button
+                onClick={() => setIsMobileProductOpen(!isMobileProductOpen)}
+                className="flex items-center justify-between w-full text-2xl font-bold opacity-70 hover:opacity-100 transition-colors"
+              >
+                Products
+                <svg className={`w-6 h-6 transition-transform duration-300 ${isMobileProductOpen ? 'rotate-180 text-brand-accent' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <div className={`space-y-4 pl-6 overflow-hidden transition-all duration-500 ${isMobileProductOpen ? 'max-h-64 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+                <Link to="/products" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>All Products Catalog</Link>
+                <Link to="/products/categories/thermal-monitoring" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Thermal Monitoring</Link>
+                <Link to="/products/categories/electrified-heating" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Electrified Heating</Link>
+                <Link to="/products/categories/heavy-duty-cable" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Heavy Duty Cable</Link>
+              </div>
+            </div>
+
+            <Link to="/industries" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={closeMenus}>Industries</Link>
+            <Link to="/about" className="block text-2xl font-bold opacity-70 hover:opacity-100 transition-colors" onClick={closeMenus}>About Us</Link>
           </div>
 
           <div className="pt-6 border-t border-white/5 space-y-4">
@@ -161,7 +188,7 @@ const Header = () => {
             </div>
           </div>
 
-          <Link to="/contact" className="block w-full py-4 bg-brand-accent text-white rounded-xl text-center font-bold text-lg shadow-xl shadow-brand-accent/20" onClick={() => setIsMenuOpen(false)}>
+          <Link to="/contact" className="block w-full py-4 bg-brand-accent text-white rounded-xl text-center font-bold text-lg shadow-xl shadow-brand-accent/20" onClick={closeMenus}>
             Technical Inquiry
           </Link>
         </div>
