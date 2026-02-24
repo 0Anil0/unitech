@@ -94,11 +94,11 @@ const TemperatureGauge = () => {
 
             {/* Hero Section */}
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12 sm:mb-24">
-                <div className="lg:w-1/2 w-full">
-                    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-main uppercase tracking-tighter mb-6 sm:mb-8 leading-[0.85]">
+                <div className="lg:w-1/2 w-full overflow-hidden">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-main uppercase tracking-tight mb-6 sm:mb-8 leading-[0.9]">
                         Precision <br /><span className="text-brand-accent italic">Pressure</span> <br />Instrumentation
                     </h1>
-                    <p className="text-muted text-base sm:text-xl leading-relaxed max-w-xl">
+                    <p className="text-muted text-base sm:text-lg leading-relaxed max-w-lg">
                         Our high-performance gauges are engineered for the most demanding industrial environments, providing accurate monitoring for low-pressure gases, corrosive media, and high-pressure homogenizer systems.
                     </p>
                 </div>
