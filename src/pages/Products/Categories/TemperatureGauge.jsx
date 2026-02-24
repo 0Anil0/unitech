@@ -1,4 +1,5 @@
 import React from 'react';
+import gaugeTempImg from '../../../assets/gauge_temp.png';
 
 const TemperatureGauge = () => {
     const gauges = [
@@ -129,7 +130,7 @@ const TemperatureGauge = () => {
                         <div className="relative h-44 sm:h-56 lg:h-64 w-full bg-white/[0.02] flex items-center justify-center p-4 sm:p-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                             <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 to-transparent z-10"></div>
                             <img
-                                src="/src/assets/gauge_temp.png"
+                                src={gaugeTempImg}
                                 alt={item.title}
                                 className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700 select-none pb-4 z-0"
                                 onError={(e) => {
