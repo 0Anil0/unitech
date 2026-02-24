@@ -12,6 +12,7 @@ import ProductList from './pages/Products/ProductList';
 import ThermalMonitoring from './pages/Products/Categories/ThermalMonitoring';
 import ElectrifiedHeating from './pages/Products/Categories/ElectrifiedHeating';
 import HeavyDutyCable from './pages/Products/Categories/HeavyDutyCable';
+import TemperatureGauge from './pages/Products/Categories/TemperatureGauge';
 import Industries from './pages/Industries';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
@@ -53,6 +54,7 @@ function AppContent() {
           <Route path="/products/categories/thermal-monitoring" element={<ThermalMonitoring />} />
           <Route path="/products/categories/electrified-heating" element={<ElectrifiedHeating />} />
           <Route path="/products/categories/heavy-duty-cable" element={<HeavyDutyCable />} />
+          <Route path="/products/categories/temperature-gauge" element={<TemperatureGauge />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />

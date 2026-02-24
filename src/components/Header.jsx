@@ -78,6 +78,9 @@ const Header = () => {
                     <Link to="/products/categories/heavy-duty-cable" className="block p-3 hover:bg-white/5 rounded-xl transition-colors text-sm font-bold" onClick={() => setIsProductHovered(false)}>
                       Heavy Duty Cable
                     </Link>
+                    <Link to="/products/categories/temperature-gauge" className="block p-3 hover:bg-white/5 rounded-xl transition-colors text-sm font-bold" onClick={() => setIsProductHovered(false)}>
+                      Temperature Gauges
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -164,6 +167,7 @@ const Header = () => {
                 <Link to="/products/categories/thermal-monitoring" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Thermal Monitoring</Link>
                 <Link to="/products/categories/electrified-heating" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Electrified Heating</Link>
                 <Link to="/products/categories/heavy-duty-cable" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Heavy Duty Cable</Link>
+                <Link to="/products/categories/temperature-gauge" className="block text-lg font-bold opacity-50 hover:opacity-100 transition-colors" onClick={closeMenus}>Temperature Gauges</Link>
               </div>
             </div>
 

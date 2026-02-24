@@ -5,7 +5,8 @@ const ProductList = () => {
     const categories = [
         { name: 'Thermal Monitoring', path: 'categories/thermal-monitoring' },
         { name: 'Electrified Heating', path: 'categories/electrified-heating' },
-        { name: 'Heavy Duty Cable', path: 'categories/heavy-duty-cable' }
+        { name: 'Heavy Duty Cable', path: 'categories/heavy-duty-cable' },
+        { name: 'Temperature Gauges', path: 'categories/temperature-gauge' }
     ];
 
     return (
