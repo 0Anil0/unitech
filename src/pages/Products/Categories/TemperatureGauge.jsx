@@ -1,6 +1,10 @@
 import React from 'react';
 import gaugeTempImg from '../../../assets/gauge_temp.png';
 
+
+
+
+
 const TemperatureGauge = () => {
     const gauges = [
         {
