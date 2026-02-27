@@ -40,7 +40,7 @@ const About = () => {
                             </p>
 
                             <p className="text-sm sm:text-base text-muted leading-relaxed">
-                                Since 1995, Unitech has been an industry leader in manufacturing <b>MI Thermocouples, Pt100/Pt1000 RTD Sensors</b>, and <b>Temperature Gauges</b>. Our facility features advanced argon-arc welding stations and high-vacuum annealing furnaces to ensure maximum sensor longevity.
+                                Founded in 2014, Unitech has been an industry leader in manufacturing <b>MI Thermocouples, Pt100/Pt1000 RTD Sensors</b>, and <b>Temperature Gauges</b>. Our facility features advanced argon-arc welding stations and high-vacuum annealing furnaces to ensure maximum sensor longevity.
                             </p>
 
                             <div className="grid grid-cols-2 gap-8 sm:gap-12 py-8 sm:py-10 border-y border-white/5 my-8">
