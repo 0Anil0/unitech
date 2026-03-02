@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Industries = () => {
+    const [selectedPdf, setSelectedPdf] = useState(null);
+
     const industriesData = [
         {
             title: 'Aluminium Products',
@@ -24,6 +26,14 @@ const Industries = () => {
         }
     ];
 
+    useEffect(() => {
+        const handleEsc = (event) => {
+            if (event.keyCode === 27) setSelectedPdf(null);
+        };
+        window.addEventListener('keydown', handleEsc);
+        return () => window.removeEventListener('keydown', handleEsc);
+    }, []);
+
     return (
         <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
             <nav className="flex gap-2 text-[10px] font-bold uppercase tracking-widest text-muted mb-6">
@@ -40,12 +50,10 @@ const Industries = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
                 {industriesData.map((item, idx) => (
-                    <a
+                    <button
                         key={idx}
-                        href={item.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group p-10 border border-white/5 bg-white/5 rounded-[2.5rem] hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-500 relative overflow-hidden"
+                        onClick={() => setSelectedPdf(item.pdf)}
+                        className="group text-left w-full p-10 border border-white/5 bg-white/5 rounded-[2.5rem] hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-500 relative overflow-hidden cursor-pointer"
                     >
                         {/* Decorative Background Icon/Number */}
                         <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent/5 rounded-full blur-3xl group-hover:bg-brand-accent/20 transition-all duration-700"></div>
@@ -62,15 +70,52 @@ const Industries = () => {
                             </p>
 
                             <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent">
-                                <span>View Industry Catalog</span>
+                                <span>Open Catalog View</span>
                                 <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </div>
                         </div>
-                    </a>
+                    </button>
                 ))}
             </div>
+
+            {/* PDF Viewer Modal */}
+            {selectedPdf && (
+                <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+                    <div
+                        className="absolute inset-0 bg-brand-deep/90 backdrop-blur-xl transition-opacity duration-300"
+                        onClick={() => setSelectedPdf(null)}
+                    ></div>
+
+                    <div className="relative w-full max-w-6xl h-[90vh] bg-neutral-900 overflow-hidden flex flex-col shadow-2xl rounded-3xl border border-white/10 animate-fade-in">
+                        {/* Modal Header */}
+                        <div className="flex justify-between items-center p-4 border-b border-white/5 shrink-0 bg-black/20">
+                            <span className="text-[10px] font-black text-brand-accent uppercase tracking-widest px-4">Technical Catalog Viewer</span>
+                            <button
+                                onClick={() => setSelectedPdf(null)}
+                                className="w-10 h-10 flex items-center justify-center hover:bg-white/5 rounded-full transition-all text-muted"
+                            >
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div className="flex-1 bg-white relative">
+                            {/* PDF Embed */}
+                            <iframe
+                                src={`${selectedPdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                                className="w-full h-full border-none"
+                                title="Industry Catalog"
+                            ></iframe>
+
+                            {/* Overlay to catch clicks if needed */}
+                            <div className="absolute inset-0 pointer-events-none border-[12px] border-neutral-900/10"></div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <div className="mt-24 p-12 glass-panel border-white/5 bg-white/[0.02] rounded-[3rem] text-center">
                 <h4 className="text-xl font-black text-main uppercase mb-4 tracking-tight">Need a Custom Solution?</h4>
@@ -88,4 +133,5 @@ const Industries = () => {
 };
 
 export default Industries;
+
 
